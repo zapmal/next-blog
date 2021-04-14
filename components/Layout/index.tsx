@@ -4,11 +4,17 @@ import Link from 'next/link';
 
 import styles from './layout.module.css';
 import utilStyles from '../../styles/utils.module.css';
+import React from 'react';
 
 const author = 'Manuel Zapata';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
+interface Props {
+  children: React.ReactChildren;
+  home?: boolean;
+}
+
+const Layout: React.FC<Props> = ({ children, home }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -73,3 +79,5 @@ export default function Layout({ children, home }) {
     </div>
   );
 }
+
+export default Layout;

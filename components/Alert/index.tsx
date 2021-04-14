@@ -2,9 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import styles from './alert.module.css';
-
 interface Props {
-  children: React.ReactChildren;
   type: string;
 }
 

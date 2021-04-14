@@ -1,16 +1,15 @@
+import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from './layout.module.css';
 import utilStyles from '../../styles/utils.module.css';
-import React from 'react';
 
 const author = 'Manuel Zapata';
 export const siteTitle = 'Next.js Sample Website';
 
 interface Props {
-  children: React.ReactChildren;
   home?: boolean;
 }
 

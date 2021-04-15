@@ -1,13 +1,16 @@
-import Head from 'next/head';
 import React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+
 import Layout, { siteTitle } from '../components/Layout';
+import Date from '../components/Date';
 
 import utilStyles from '../styles/utils.module.css';
 
-import { getSortedPostsData, Post } from '../utils/posts';
+import { getSortedPostsData, PostType } from '../utils/posts';
 
 interface Props {
-  allPostsData: Post[];
+  allPostsData: PostType[];
 };
 
 const Home: React.FC<Props> = ({ allPostsData }) => {
@@ -18,13 +21,12 @@ const Home: React.FC<Props> = ({ allPostsData }) => {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>
-          Hello there, I'm <strong>Manuel</strong> and I'm a Software Engineer.
-          You can contact me on{' '}
+          Hello there, my name's <strong>Manuel</strong> and I'm a Software Engineer.
+          You can get in touch with me on{' '}
           <a href='https://twitter.com/zapmal0' target='_blank'>Twitter</a>.
         </p>
         <p>
-          Here you'll find some blogs. This site was built following{' '}
-          <a href='https://nextjs.org/learn'>the official Next.js guide</a>.
+          Want to read my blog posts? Scroll down.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -32,11 +34,13 @@ const Home: React.FC<Props> = ({ allPostsData }) => {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, title, date }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                {title}
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date!} />
+              </small>
             </li>
           ))}
         </ul>
